@@ -25,8 +25,6 @@ export const Page = () => {
 
   const { state, loadNotes, addNote } = useNoteContext();
 
-  console.log(state);
-
   const isEmpty = state.notes.length === 0;
 
   useEffect(() => {
@@ -45,6 +43,7 @@ export const Page = () => {
             open={open}
             handleClose={handleClose}
             onCreate={addNote}
+            listLength={state.notes.length}
           />
           {state.notes.map((item: NoteData) => (
             <ExistingNote data={item} />

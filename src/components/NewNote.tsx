@@ -39,7 +39,8 @@ interface NewNoteProps {
   data?: FormData;
   open: boolean;
   handleClose: () => void;
-  onCreate: (data: FormData) => void;
+  onCreate: (data: FormData, id: string) => void;
+  listLength: number;
 }
 
 interface FormItemProps {
@@ -80,6 +81,7 @@ export function NewNote({
   open,
   handleClose,
   onCreate,
+  listLength,
 }: NewNoteProps) {
   const [title, setTitle] = useState(data ? data?.title : "");
   const [subtitle, setSubtitle] = useState(data ? data?.subtitle : "");
@@ -92,7 +94,7 @@ export function NewNote({
   };
 
   const onClose = () => {
-    onCreate({ title, subtitle, content });
+    onCreate({ title, subtitle, content }, `${listLength + 1}`);
     handleClose();
     resetForm();
   };

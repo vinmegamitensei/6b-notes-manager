@@ -10,8 +10,8 @@ export function getNotes(){
     return [];
 }
 
-export function setNotes(data: FormData){    
-    const newNote = generateNewNote(data);
+export function setNotes(data: FormData, id: string){    
+    const newNote = generateNewNote(data, id);
     const currentNotes = getNotes();
     const updatedNotes = [ ...currentNotes, newNote];
     return localStorage.setItem('notes', JSON.stringify(updatedNotes));

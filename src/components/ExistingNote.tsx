@@ -35,17 +35,16 @@ interface ExistingNoteProps {
 }
 
 export const ExistingNote = ({ data }: ExistingNoteProps) => {
-  console.log(data);
   return (
-    <Grid item sx={wrapperStyle}>
+    <Grid item sx={wrapperStyle} key={data.id}>
       <Card sx={cardStyle}>
         <div>
           <Typography sx={titleStyle}>{data.title}</Typography>
           <Typography sx={labelStyle}>{data.subtitle}</Typography>
           <Typography sx={labelStyle}>{data.date}</Typography>
         </div>
-        <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={() => console.log("Edit")}>Edit</Button>
+        <Button onClick={() => console.log("Delete")}>Delete</Button>
       </Card>
     </Grid>
   );

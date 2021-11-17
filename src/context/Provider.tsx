@@ -17,8 +17,8 @@ export const Provider = ({ children }: ContextProps) => {
     const notes: NoteData[] = getNotes();
     dispatch(actions.loadNotes(notes));
   }, []);
-  const addNote = useCallback((data: NoteData) => {
-    localStorageNotes(data);
+  const addNote = useCallback((data: NoteData, id) => {
+    localStorageNotes(data, id);
     dispatch(actions.setNotes(data));
   }, []);
 

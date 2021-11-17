@@ -5,6 +5,7 @@ export interface FormData {
 } 
 
 export interface NoteData extends FormData {
+    id: string;
     colour: string;
     date: string;
 }
