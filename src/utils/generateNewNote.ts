@@ -5,9 +5,10 @@ function pickRandomColour(){
 }
 
 export function generateNewNote(data: FormData){
+    const date = new Date().toLocaleDateString();
     return ({
         ...data,
         colour: `#${pickRandomColour()}`,
-        date: new Date()
+        date
     })
 }

@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Container, Typography } from "@mui/material";
 import { NewNote } from "./components/NewNote";
 import { NewNoteButton } from "./components/NewNoteButton";
+import { ExistingNote } from "./components/ExistingNote";
 import useNoteContext from "./context/useNoteContext";
 import "./App.css";
+import { NoteData } from "./types/form";
 
 const titleStyle = {
   fontSize: "32px",
@@ -22,6 +24,8 @@ export const Page = () => {
   const handleClose = () => setOpen(false);
 
   const { state, loadNotes, addNote } = useNoteContext();
+
+  console.log(state);
 
   const isEmpty = state.notes.length === 0;
 
@@ -42,8 +46,8 @@ export const Page = () => {
             handleClose={handleClose}
             onCreate={addNote}
           />
-          {state.notes.map((item: any) => (
-            <p>{item.title}</p>
+          {state.notes.map((item: NoteData) => (
+            <ExistingNote data={item} />
           ))}
         </div>
       </Container>

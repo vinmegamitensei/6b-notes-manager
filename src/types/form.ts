@@ -6,4 +6,5 @@ export interface FormData {
 
 export interface NoteData extends FormData {
     colour: string;
+    date: string;
 }
