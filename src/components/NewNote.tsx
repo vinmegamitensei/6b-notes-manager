@@ -51,7 +51,13 @@ function FormItem({ title, value, onChange }: FormItemProps) {
   );
 }
 
-export function NewNote({ button, data, open, handleClose }: NewNoteProps) {
+export function NewNote({
+  button,
+  data,
+  open,
+  handleClose,
+  onCreate,
+}: NewNoteProps) {
   const [title, setTitle] = useState(data ? data?.title : "");
   const [subtitle, setSubtitle] = useState(data ? data?.subtitle : "");
   const [content, setContent] = useState(data ? data?.content : "");
@@ -70,8 +76,8 @@ export function NewNote({ button, data, open, handleClose }: NewNoteProps) {
           </Typography>
           <FormItem title="Title" value={title} onChange={setTitle} />
           <FormItem title="Subtitle" value={subtitle} onChange={setSubtitle} />
-          <FormItem title="Content" value={content} onChange={setContent} />
-          <Button onClick={() => console.log({ title, subtitle, content })}>
+          <FormItem title="Description" value={content} onChange={setContent} />
+          <Button onClick={() => onCreate({ title, subtitle, content })}>
             Submit
           </Button>
         </Box>
